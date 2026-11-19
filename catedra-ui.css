@@ -2352,3 +2352,72 @@ main input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([t
 
 .ct-oral-incluir { display:flex; align-items:center; gap:var(--ct-e2); min-height:var(--ct-e7); color:var(--ink); font-size:var(--fs-base); cursor:pointer; }
 .ct-oral-incluir input { flex:none; width:var(--ct-e4); height:var(--ct-e4); }
+
+/* ===== INÍCIO · LEITURA CINEMATOGRÁFICA ===========================================
+   Pedido da dona (19/11/2026): "visual mais limpo, moderno, minimalista
+   cinematográfico de app startup". O que muda:
+   · Ritmo — um degrau a mais de ar entre os blocos e no cabeçalho.
+   · Herói — painel de abertura com luz suave e difusa (nunca halo de deslocamento
+     zero), raio maior, fio de 1px e sombra profunda; o cronômetro vira vidro claro.
+   · Cartões — fio de 1px, sem sombra: o relevo vem da borda, não do brilho.
+   · Tipo — saudação na serifa display; rótulos menores e espaçados; nada em px.
+   · Movimento — entrada em cascata (opacidade + 8px), desligada em reduced-motion.
+   Tudo por token: vale nas oito direções, no claro e no escuro. */
+.cth-inicio{gap:var(--ct-e6)}
+.cth-inicio .cth-welcome{gap:var(--ct-e3);padding-block:var(--ct-e4) 0}
+.cth-inicio .cth-kicker{font-size:var(--fs-2xs);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text3)}
+.cth-inicio .cth-h1{font-family:var(--display);font-size:clamp(calc(var(--fs-2xl)*1.6),3.2vw,calc(var(--fs-2xl)*2.4));font-weight:700;letter-spacing:-.035em;line-height:1.03}
+.cth-inicio .cth-sub{font-size:var(--fs-md);color:var(--text3)}
+.cth-inicio .cth-chips{gap:var(--ct-e2);margin-top:var(--ct-e1)}
+.cth-inicio .cth-chip{background:transparent;border:1px solid var(--border);color:var(--text2);border-radius:var(--ct-pill);padding:var(--ct-e1) var(--ct-e3);font-size:var(--fs-xs);font-weight:600;letter-spacing:.03em}
+.cth-inicio .cth-chip b{font-family:var(--mono);font-weight:700;color:var(--ink)}
+
+.cth-inicio .cth-bancada{
+  border:1px solid var(--ct-hero-line);
+  border-radius:calc(var(--radius) + var(--ct-e1));
+  padding:clamp(var(--ct-e5),3vw,var(--ct-e7));
+  gap:clamp(var(--ct-e5),3vw,var(--ct-e7));
+  box-shadow:0 var(--ct-e6) var(--ct-e7) calc(var(--ct-e7)*-.7) rgba(8,7,15,.42);
+}
+.cth-inicio .cth-bancada::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;
+  background:
+    radial-gradient(120% 120% at 88% -20%, color-mix(in oklab, var(--ct-hero-ink) 17%, transparent), transparent 58%),
+    linear-gradient(180deg, color-mix(in oklab, var(--ct-hero-ink) 7%, transparent), transparent 32%);
+}
+.cth-inicio .cth-bancada::after{opacity:.18;background:color-mix(in oklab, var(--ct-hero-ink) 28%, transparent)}
+.cth-inicio .cth-relogio{
+  background:color-mix(in oklab, var(--ct-hero-ink) 8%, transparent);
+  border:1px solid var(--ct-hero-line);border-radius:calc(var(--radius) - var(--ct-e1));
+  padding:var(--ct-e5);box-shadow:none;
+}
+
+.cth-inicio .cth-card,.cth-inicio .cth-gcard{
+  border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);
+  box-shadow:none;padding:var(--ct-e5) calc(var(--ct-e5) + var(--ct-e1));
+}
+.cth-inicio .cth-kpi{padding:var(--ct-e5) calc(var(--ct-e5) + var(--ct-e1))}
+/* O foco dentro do herói não é cartão: ele herda a tinta do painel. */
+.cth-inicio .cth-bancada .cth-estudo{background:none;border:0;border-radius:0;box-shadow:none;padding:0}
+.cth-inicio .cth-sec{margin:0;padding-top:var(--ct-e2);gap:var(--ct-e3)}
+.cth-inicio .cth-sec h2{font-size:var(--fs-xl);font-weight:650;letter-spacing:-.012em}
+.cth-inicio .cth-sec .meta{font-size:var(--fs-sm);color:var(--text3)}
+.cth-inicio .cth-chead{margin-bottom:var(--ct-e4)}
+.cth-inicio .cth-chead h3{font-size:var(--fs-lg);font-weight:650;letter-spacing:-.01em}
+.cth-inicio .cth-chead .meta{font-size:var(--fs-xs);color:var(--text3);letter-spacing:.03em}
+.cth-inicio .cth-tasknext{background:var(--accentSoft);border-color:var(--accentRing);box-shadow:none}
+.cth-inicio .cth-bfoco{background:var(--accentSolid);border-radius:var(--ct-pill);min-height:var(--ct-alvo-toque);box-shadow:none}
+
+@keyframes cth-entrada{from{opacity:0;transform:translateY(var(--ct-e2))}to{opacity:1;transform:none}}
+.cth-inicio > *{animation:cth-entrada .55s cubic-bezier(.22,.7,.2,1) both}
+.cth-inicio > *:nth-child(2){animation-delay:.04s}
+.cth-inicio > *:nth-child(3){animation-delay:.08s}
+.cth-inicio > *:nth-child(4){animation-delay:.12s}
+.cth-inicio > *:nth-child(n+5){animation-delay:.16s}
+@media(prefers-reduced-motion:reduce){.cth-inicio > *{animation:none}}
+@media(max-width:640px){
+  .cth-inicio{gap:var(--ct-e5)}
+  .cth-inicio .cth-h1{font-size:calc(var(--fs-2xl)*1.4)}
+  .cth-inicio .cth-bancada{padding:var(--ct-e5);border-radius:var(--radius)}
+  .cth-inicio .cth-card,.cth-inicio .cth-gcard,.cth-inicio .cth-kpi{padding:var(--ct-e4)}
+}
