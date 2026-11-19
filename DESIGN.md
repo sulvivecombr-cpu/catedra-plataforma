@@ -116,6 +116,8 @@ Três vozes, com papéis fixos:
 - **Inter** (`--body`) — a interface densa: rótulos, listas, parágrafos.
 - **JetBrains Mono** (`--mono`) — só onde há medida: percentuais, contadores, cronômetro, número de artigo, tempo. Nunca como fantasia de "técnico".
 
+O **Início** usa a voz de app (`Inter Tight`, já embarcada) nos títulos, na saudação e nos números: é a bancada de decisão do dia, não uma tela de leitura. As telas de conteúdo continuam na serifa da direção.
+
 As fontes são locais, em `./fonts` (woff2). O app precisa abrir igual sem rede — nenhuma fonte pode vir de CDN.
 
 Escala do host: `--fs-3xs` 10.5 · `--fs-2xs` 11 · `--fs-xs` 11.5 · `--fs-sm` 12.5 · `--fs-base` 13.5 · `--fs-md` 14.5 · `--fs-lg` 15.5 · `--fs-xl` 17 · `--fs-2xl` 19. Ela é multiplicada por `fontScale` das preferências, então **nenhum tamanho vai escrito em px numa tela do host**.
